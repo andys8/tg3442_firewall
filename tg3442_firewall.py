@@ -62,7 +62,7 @@ def login(session, url, username, password):
 
     # Get login page, parse and read session ID, Iv, Salt
     r = session.get(f"{url}")
-    h = BeautifulSoup(r.text, "lxml")
+    h = BeautifulSoup(r.text, "xml")
     current_session_id = re.search(r".*var currentSessionId = '(.+)';.*", h.head.text)[1]
     iv = re.search(r".*var myIv = '(.+)';.*", h.head.text)[1]
     salt = re.search(r".*var mySalt = '(.+)';.*", h.head.text)[1]
